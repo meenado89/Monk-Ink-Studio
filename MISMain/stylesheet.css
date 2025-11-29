@@ -171,9 +171,9 @@
 
 /* WHY US */
 
-.whyUs{
-    background-color:#f0f2f5;
-    height: 100vh;
+.whyUs {
+    background-color:#272727;
+    padding: 60px 0;
 }
 
 /* Gradient text */
@@ -183,7 +183,7 @@
     font-weight: 700;
     text-align: center;    
     /* Gradient background */
-    background: linear-gradient(90deg, #e8c381, #866f44);    
+    background: linear-gradient(75deg, #f3e9d9, #b47501);    
     /* Make the text show the gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;    
@@ -196,36 +196,71 @@
     font-family: "Exo", sans-serif;
     font-size: 2.5rem; 
     font-weight: 400;
-    text-align: center;    
+    text-align: center; 
+    color: aliceblue;   
     
+}
+
+.subtext{
+    font-family: "Exo", sans-serif;
+    font-size: 1.2rem; 
+    text-align: center; 
+    color: aliceblue;  
 }
 
 /* WHYCARDS */
 .whycard {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease-in-out;
+    background: rgba(53, 47, 47, 0.022);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.353);
+    box-shadow:        0 8px 30px rgba(0, 0, 0, 0.35),        inset 0 1px 6px rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
     color: #ffffff;
-     flex: 1;                 /* all cards same width */
+    /*Equalheight+layout*/flex: 1;
     display: flex;
-    flex-direction: column;  /* allow text to fill */
-    height: 100%;            /* allow stretch */
-    min-height: 300px;       /* set fixed equal height */
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 320px;
     width: 20%;
-    min-width: 250px;
-}
+    min-width: 260px;
+    position: relative;
+    overflow: hidden;
+   }
+
 
 /* Hover Effects */
 .whycard:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-    border-color: rgba(255, 255, 255, 0.25);
+     border: 2px solid rgba(193, 157, 89, 0.44);
+    box-shadow:
+        0 12px 40px rgba(193, 157, 89, 0.25),
+        inset 0 2px 10px rgba(255, 255, 255, 0.4);
+    transform: translateY(-6px);
 }
+
+.whycard::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.215),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.6s;
+}
+
+.whycard:hover::after {
+    left: 165%;
+}
+
 
 /* Card text styling */
 .whycard p {
@@ -233,7 +268,7 @@
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 0;
-    color: #000000;
+    color: #ffffff;
     justify-content: center;
     align-self: center;
     text-align: justify;
