@@ -52,7 +52,8 @@
 
 /* HERO – MUST BE OUTSIDE MEDIA QUERY */
 .hero {
-    height: 90vh;
+
+    height: 100vh;
     width: 100%;
     background-image: url("Assets/heroimg.jpeg");
     background-size: cover;
@@ -66,7 +67,7 @@
     font-family: "Exo", sans-serif;
     font-weight: 700;
     text-align: center;
-    /* <-- This is the real fix */
+
 }
 
 .hero-content span {
@@ -79,7 +80,7 @@
     font-size: 26px;
     font-weight: 400;
     text-align: center;
-    /* also center the paragraph */
+
 }
 
 /* GLASS CARD */
@@ -89,7 +90,6 @@
     backdrop-filter: blur(5px);
     /* glass blur */
     -webkit-backdrop-filter: blur(10px);
-    /* safari fix */
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.457);
     padding: 20px;
@@ -104,9 +104,9 @@
 
 }
 
-.glasscontainer{
+.glasscontainer {
     position: relative;
-    display: flex;    
+    display: flex;
     justify-items: center;
     align-items: center;
     justify-content: center;
@@ -172,21 +172,24 @@
 /* WHY US */
 
 .whyUs {
-    background-color:#272727;
+    background-color: #272727;
     padding: 60px 0;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 /* Gradient text */
-.Why-header h1 {
+.Why-header h1,
+ .artist {
     font-family: "Exo", sans-serif;
-    font-size: 3rem; 
+    font-size: 3rem;
     font-weight: 700;
-    text-align: center;    
+    text-align: center;
     /* Gradient background */
-    background: linear-gradient(75deg, #f3e9d9, #b47501);    
+    background: linear-gradient(75deg, #f3e9d9, #b47501);
     /* Make the text show the gradient */
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;    
+    -webkit-text-fill-color: transparent;
     /* For Firefox */
     background-clip: text;
     color: transparent;
@@ -194,18 +197,18 @@
 
 .why-tittle p {
     font-family: "Exo", sans-serif;
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
     font-weight: 400;
-    text-align: center; 
-    color: aliceblue;   
-    
+    text-align: center;
+    color: aliceblue;
+
 }
 
-.subtext{
+.subtext {
     font-family: "Exo", sans-serif;
-    font-size: 1.2rem; 
-    text-align: center; 
-    color: aliceblue;  
+    font-size: 1.2rem;
+    text-align: center;
+    color: aliceblue;
 }
 
 /* WHYCARDS */
@@ -216,10 +219,10 @@
     border-radius: 18px;
     padding: 28px;
     border: 1px solid rgba(255, 255, 255, 0.353);
-    box-shadow:        0 8px 30px rgba(0, 0, 0, 0.35),        inset 0 1px 6px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), inset 0 1px 6px rgba(255, 255, 255, 0.4);
     transition: all 0.2s ease;
     color: #ffffff;
-    /*Equalheight+layout*/flex: 1;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -228,12 +231,12 @@
     min-width: 260px;
     position: relative;
     overflow: hidden;
-   }
+}
 
 
 /* Hover Effects */
 .whycard:hover {
-     border: 2px solid rgba(193, 157, 89, 0.44);
+    border: 2px solid rgba(193, 157, 89, 0.44);
     box-shadow:
         0 12px 40px rgba(193, 157, 89, 0.25),
         inset 0 2px 10px rgba(255, 255, 255, 0.4);
@@ -247,12 +250,10 @@
     left: -150%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.215),
-        transparent
-    );
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.215),
+            transparent);
     transform: skewX(-25deg);
     transition: 0.6s;
 }
@@ -276,15 +277,101 @@
     padding-top: 10px;
 }
 
-/* Optional: Add subtle gradient border glow */
+
 .whycard:hover {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 
-                0 0 15px rgba(193, 157, 89, 0.4); /* monk ink gold glow */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(193, 157, 89, 0.4);
+    /* monk ink gold glow */
 }
 
 .whycard-group {
     display: flex;
     justify-content: center;
     gap: 30px;
+    overflow: hidden;
 }
 
+/* Meet the artist */
+
+.artist-cards {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 50px;
+    position: relative;
+}
+
+.artist-cards .card {
+    width: 220px;
+    height: 320px;
+    perspective: 1000px;
+    position: relative;
+    margin-left: -40px; /* overlapping effect */
+}
+
+.artist-cards .card:first-child {
+    margin-left: 0;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg) translateY(-20px) scale(1.05);
+    z-index: 99;
+}
+
+.card-front, 
+.card-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    position: absolute;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Playing card front design */
+.card-front {
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.15),
+        rgba(255,255,255,0.05)
+    );
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.card-front h2 {
+    font-size: 40px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.card-front p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Back - Real image */
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
